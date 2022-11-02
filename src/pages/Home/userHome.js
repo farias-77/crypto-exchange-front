@@ -13,7 +13,7 @@ export default function UserHome() {
     const userId = useId();
     const token = useToken();
 
-    const [balance, setBalance] = useState({});
+    const [balance, setBalance] = useState(false);
 
     useEffect(() => {
         const url = `${process.env.REACT_APP_API_BASE_URL}/wallet/${userId}`;
@@ -44,11 +44,10 @@ export default function UserHome() {
                 <Title>Your balance</Title>
                 <Section>
                     <BalanceInfo>
-                        LSB:
-                        {balance.linkCoinAmount ? balance.linkCoinAmount : ""}
+                        {balance ? `LSB: ${balance.linkCoinAmount}` : <></>}
                     </BalanceInfo>
                     <BalanceInfo>
-                        R$: {balance.realAmount ? balance.realAmount : ""}
+                        {balance ? `R$: ${balance.realAmount}` : <></>}
                     </BalanceInfo>
                 </Section>
                 <Section>
