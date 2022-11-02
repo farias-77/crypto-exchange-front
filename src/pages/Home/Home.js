@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useRole from "../../hooks/useRole";
-import UserHome from "./userHome";
+import UserHome from "./UserHome";
+import AdminHome from "./AdminHome";
 
 export default function Home() {
     const role = useRole();
@@ -10,5 +11,5 @@ export default function Home() {
         navigate("/");
     }
 
-    return role === "USER" ? <UserHome /> : <></>;
+    return role === "USER" ? <UserHome /> : <AdminHome />;
 }
