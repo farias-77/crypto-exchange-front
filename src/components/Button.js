@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export default function Button({ text }) {
-    return <Container>{text}</Container>;
+export default function Button({ text, func }) {
+    return <Container onClick={func}>{text}</Container>;
 }
 
 const Container = styled.div`

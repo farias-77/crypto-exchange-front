@@ -21,7 +21,10 @@ export default function App() {
         <BrowserRouter>
             <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <Routes>
-                <Route path="/" element={<SignIn />} />
+                <Route
+                    path="/"
+                    element={<SignIn setLoggedIn={setLoggedIn} />}
+                />
             </Routes>
         </BrowserRouter>
     );

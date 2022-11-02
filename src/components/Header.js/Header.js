@@ -1,12 +1,16 @@
 import { IoIosLogOut } from "react-icons/io";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { Container } from "../../components/Container";
 
 export default function Header({ loggedIn, setLoggedIn }) {
+    const navigate = useNavigate();
+
     function logout() {
         window.localStorage.removeItem("userData");
         setLoggedIn(false);
+        navigate("/");
     }
 
     return (
