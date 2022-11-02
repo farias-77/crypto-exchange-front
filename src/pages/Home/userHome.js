@@ -28,7 +28,7 @@ export default function UserHome() {
             })
             .catch((err) => console.log(err));
     }, []);
-
+    console.log(balance);
     function tradeCoin(action) {
         const amount = prompt(`Enter the amount you want to ${action} in R$`);
 
