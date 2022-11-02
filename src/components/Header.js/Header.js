@@ -42,6 +42,15 @@ const Navbar = styled.div`
 
         cursor: pointer;
     }
+
+    @media (max-width: 800px) {
+        border-radius: 0;
+        justify-content: space-around;
+
+        svg {
+            position: static;
+        }
+    }
 `;
 
 const Title = styled.span`

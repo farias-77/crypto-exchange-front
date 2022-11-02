@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-import Form from "../../components/Form";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Navigate from "../../components/Navigate";
@@ -9,13 +9,24 @@ import { Container } from "../../components/Container";
 import { Page } from "../../components/Page";
 
 export default function SignIn() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <Container>
             <Page>
                 <Title>Sign-in</Title>
                 <Form>
-                    <Input type="email" />
-                    <Input type="password" />
+                    <Input
+                        type="email"
+                        userInfo={email}
+                        setUserInfo={setEmail}
+                    />
+                    <Input
+                        type="password"
+                        userInfo={password}
+                        setUserInfo={setPassword}
+                    />
                     <Button text="Sign-in" />
                 </Form>
 
@@ -25,12 +36,20 @@ export default function SignIn() {
     );
 }
 
+const Form = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const Title = styled.div`
     width: 100%;
 
     display: flex;
     justify-content: center;
 
-    font-size: 20px;
+    font-size: 25px;
     color: #000000;
 `;
