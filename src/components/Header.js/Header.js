@@ -3,12 +3,17 @@ import styled from "styled-components";
 
 import { Container } from "../../components/Container";
 
-export default function Header() {
+export default function Header({ loggedIn, setLoggedIn }) {
+    function logout() {
+        window.localStorage.removeItem("userData");
+        setLoggedIn(false);
+    }
+
     return (
         <Container>
             <Navbar>
-                <Title>LOGO CRYPTOEXCHANGE</Title>
-                <IoIosLogOut />
+                <Title>(LOGO CRYPTOEXCHANGE)</Title>
+                {loggedIn ? <IoIosLogOut onClick={logout} /> : <></>}
             </Navbar>
         </Container>
     );
@@ -40,7 +45,7 @@ const Navbar = styled.div`
 `;
 
 const Title = styled.span`
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     color: #ffffff;
 
