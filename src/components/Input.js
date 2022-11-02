@@ -10,7 +10,7 @@ export default function Input({ type, userInfo, setUserInfo }) {
                 onChange={(e) => setUserInfo(e.target.value)}
                 debounceTimeout={250}
                 placeholder={`Enter your ${type}`}
-                type={type}
+                type={type === "confirm password" ? "password" : type}
             />
         </Container>
     );

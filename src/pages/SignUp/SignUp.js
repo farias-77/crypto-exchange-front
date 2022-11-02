@@ -10,39 +10,34 @@ import Navigate from "../../components/Navigate";
 import { Container } from "../../components/Container";
 import { Page } from "../../components/Page";
 
-export default function SignIn({ setLoggedIn }) {
+export default function SignUp() {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [fullName, setFullName] = useState("");
 
-    function login() {
-        const url = `${process.env.REACT_APP_API_BASE_URL}/sign-in`;
+    function signUp() {
+        const url = `${process.env.REACT_APP_API_BASE_URL}/sign-up`;
 
-        const body = { email, password };
+        const body = { email, password, confirmPassword, fullName };
 
         const promise = axios.post(url, body);
 
         promise.then((res) => {
-            window.localStorage.setItem(
-                "userData",
-                JSON.stringify({
-                    token: res.data.token,
-                    role: res.data.role,
-                })
-            );
-            setLoggedIn(true);
-            navigate("/home");
+            navigate("/");
         });
-        promise.catch(() => {
-            alert("Invalid credentials");
+        promise.catch((res) => {
+            console.log(res);
+            alert(res.response.data);
         });
     }
 
     return (
         <Container>
             <Page>
-                <Title>Sign-in</Title>
+                <Title>Sign-up</Title>
                 <Form>
                     <Input
                         type="email"
@@ -54,12 +49,22 @@ export default function SignIn({ setLoggedIn }) {
                         userInfo={password}
                         setUserInfo={setPassword}
                     />
-                    <Button text="Sign-in" func={login} />
+                    <Input
+                        type="confirm password"
+                        userInfo={confirmPassword}
+                        setUserInfo={setConfirmPassword}
+                    />
+                    <Input
+                        type="full name"
+                        userInfo={fullName}
+                        setUserInfo={setFullName}
+                    />
+                    <Button text="Sign-up" func={signUp} />
                 </Form>
 
                 <Navigate
-                    text={"Don't have an account? Sign-up!"}
-                    destination={"sign-up"}
+                    text={"Already have an account? Sign-in!"}
+                    destination={""}
                 />
             </Page>
         </Container>
