@@ -9,6 +9,7 @@ import Navigate from "../../components/Navigate";
 
 import { Container } from "../../components/Container";
 import { Page } from "../../components/Page";
+import { Title } from "../../components/Title";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -77,14 +78,4 @@ const Form = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
-
-const Title = styled.div`
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    font-size: 25px;
-    color: #000000;
 `;

@@ -9,6 +9,7 @@ import Navigate from "../../components/Navigate";
 
 import { Container } from "../../components/Container";
 import { Page } from "../../components/Page";
+import { Title } from "../../components/Title";
 
 export default function SignIn({ setLoggedIn }) {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ export default function SignIn({ setLoggedIn }) {
                 JSON.stringify({
                     token: res.data.token,
                     role: res.data.role,
+                    id: res.data.userId,
                 })
             );
             setLoggedIn(true);
@@ -72,14 +74,4 @@ const Form = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
-
-const Title = styled.div`
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    font-size: 25px;
-    color: #000000;
 `;

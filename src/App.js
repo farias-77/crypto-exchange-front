@@ -7,6 +7,7 @@ import "./assets/styles.css";
 import Header from "./components/Header.js/Header";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
+import Home from "./pages/Home/Home";
 
 export default function App() {
     const [loggedIn, setLoggedIn] = useState(() => checkLocalStorage());
@@ -27,6 +28,7 @@ export default function App() {
                     element={<SignIn setLoggedIn={setLoggedIn} />}
                 />
                 <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/home" element={<Home />} />
             </Routes>
         </BrowserRouter>
     );
