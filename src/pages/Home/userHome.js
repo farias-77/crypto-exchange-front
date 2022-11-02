@@ -29,11 +29,20 @@ export default function UserHome() {
             .catch((err) => console.log(err));
     }, []);
 
+    function tradeCoin(action) {
+        const amount = prompt(`Enter the amount you want to ${action} in R$`);
+
+        const message = `Hi, I would like to ${action} R$${amount} of LSB please`;
+        let win = window.open(
+            `https://wa.me/553287047539?text=${encodeURI(message)}`
+        );
+    }
+
     return (
         <Container>
             <Page>
                 <Title>Your balance</Title>
-                <Balance>
+                <Section>
                     <BalanceInfo>
                         LSB:{" "}
                         {balance.linkCoinAmount ? balance.linkCoinAmount : ""}
@@ -41,13 +50,17 @@ export default function UserHome() {
                     <BalanceInfo>
                         R$: {balance.realAmount ? balance.realAmount : ""}
                     </BalanceInfo>
-                </Balance>
+                </Section>
+                <Section>
+                    <Button onClick={() => tradeCoin("buy")}>BUY</Button>
+                    <Button onClick={() => tradeCoin("sell")}>SELL</Button>
+                </Section>
             </Page>
         </Container>
     );
 }
 
-const Balance = styled.div`
+const Section = styled.div`
     width: 100%;
 
     margin-top: 50px;
@@ -56,4 +69,23 @@ const Balance = styled.div`
     justify-content: space-around;
 `;
 
-const BalanceInfo = styled.span``;
+const BalanceInfo = styled.span`
+    font-size: 20px;
+`;
+
+const Button = styled.div`
+    width: 200px;
+    height: 40px;
+
+    border-radius: 6px;
+    background-color: #00786a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+
+    cursor: pointer;
+`;
