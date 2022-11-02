@@ -51,7 +51,10 @@ export default function SignIn({ setLoggedIn }) {
                     <Button text="Sign-in" func={login} />
                 </Form>
 
-                <Navigate />
+                <Navigate
+                    text={"Don't have an account? Sign-up!"}
+                    destination={"sign-up"}
+                />
             </Page>
         </Container>
     );
