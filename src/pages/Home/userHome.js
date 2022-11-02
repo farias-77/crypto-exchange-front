@@ -44,7 +44,7 @@ export default function UserHome() {
                 <Title>Your balance</Title>
                 <Section>
                     <BalanceInfo>
-                        LSB:{" "}
+                        LSB:
                         {balance.linkCoinAmount ? balance.linkCoinAmount : ""}
                     </BalanceInfo>
                     <BalanceInfo>
